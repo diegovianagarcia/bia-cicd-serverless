@@ -5,7 +5,6 @@
 
 #aws-sam
 **/.aws-sam
-**/template-out*
 
 #React node_modules
 /client/node_modules
