@@ -25,22 +25,12 @@ Globals:
   Function:
     Timeout: 3   
     MemorySize: 512
-    VpcConfig:
-        SecurityGroupIds:
-          - Ref: SecurityGroup
-        SubnetIds:
-          - subnet-0c7211650af34e7ec
-          - subnet-015b649aef2a4db51
     Environment:
        Variables:
-          DB_USER: 
-            -Ref: DBUser
-          DB_NAME: 
-            -Ref: DBName
-          DB_PWD: 
-            -Ref: DBPassword
-          DB_HOST: 
-            -Ref: DBHost  
+          DB_USER: !Ref DBUser
+          DB_NAME: !Ref DBName
+          DB_PWD: !Ref DBPassword
+          DB_HOST: !Ref DBHost
           DB_PORT: 5432
   Api:
     Cors:
@@ -56,6 +46,12 @@ Resources:
       Runtime: nodejs24.x
       Architectures:
         - x86_64
+      VpcConfig:
+        SecurityGroupIds:
+          - !Ref SecurityGroup
+        SubnetIds:
+          - subnet-0c7211650af34e7ec
+          - subnet-015b649aef2a4db51
       Events:
         Ping:
           Type: Api 
